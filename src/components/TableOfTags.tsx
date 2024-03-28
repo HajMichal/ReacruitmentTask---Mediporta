@@ -27,8 +27,8 @@ const TableOfTags = () => {
   }, [isError, error]);
 
   useEffect(() => {
-    refetch();
-  }, [debouncedPage, debouncedPageSize, order, sort, refetch]);
+    if (!isError) refetch();
+  }, [debouncedPage, debouncedPageSize, order, sort, isError, refetch]);
 
   const rows = tagsData?.items.map((tag) => (
     <Table.Tr key={tag.name} className="hover:opacity-80 hover:bg-gray-100">
